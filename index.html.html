@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>InternCheck – Is This Internship Real?</title>
+<style>
+:root{--navy:#14284b;--blue:#e8f1fb;--blue2:#cfe2f7;--orange:#f08a24;--orange-bg:#fff2e3;--bg:#fff;--page:#eef3f9;--text:#1c2a3f;--mut:#5d6b82;--line:#dbe4f0;--green:#1f8a4c;--green-bg:#e3f5ea;--red:#c43b3b;--red-bg:#fde8e8;--card:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--navy:#9cc3f5;--blue:#1b2b44;--blue2:#27415f;--orange-bg:#3a2a16;--bg:#0f1829;--page:#0a111e;--text:#e6edf8;--mut:#9aa9c0;--line:#2a3a54;--green-bg:#15301f;--red-bg:#3a1c1c;--card:#14213a}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--text);display:flex;justify-content:center;min-height:100vh}
+.phone{width:390px;height:844px;max-width:100%;background:var(--bg);margin:16px 0;border-radius:36px;border:8px solid #14284b;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(20,40,75,.25)}
+@media (max-width:430px){body{display:block}.phone{width:100%;height:100vh;height:100dvh;margin:0;border:0;border-radius:0}}
+.top{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);background:var(--bg)}
+.back{border:0;background:var(--blue);color:var(--navy);width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer}
+.top b{flex:1;font-size:16px;color:var(--navy)}
+.step{font-size:12px;color:var(--mut)}
+.prog{height:4px;background:var(--blue)}.prog i{display:block;height:100%;background:var(--orange);transition:width .3s}
+.body{flex:1;overflow-y:auto;padding:18px 18px 8px}
+.foot{padding:12px 18px 18px;border-top:1px solid var(--line);background:var(--bg)}
+h1{font-size:26px;line-height:1.2;margin:0 0 8px;color:var(--navy)}h2{font-size:20px;margin:0 0 6px;color:var(--navy)}
+p{margin:0 0 12px;line-height:1.5;color:var(--mut);font-size:14px}
+.btn{width:100%;border:0;border-radius:14px;padding:14px;font-size:15px;font-weight:600;cursor:pointer;background:var(--navy);color:var(--bg);margin-bottom:8px}
+.btn.sec{background:var(--blue);color:var(--navy)}.btn.out{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+.note{background:var(--orange-bg);border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.45;color:var(--text);margin-bottom:12px;border-left:4px solid var(--orange)}
+label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin:12px 0 6px}
+input{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:12px;font-size:14px;background:var(--bg);color:var(--text)}
+input:focus{outline:2px solid var(--blue2);border-color:var(--navy)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--bg);color:var(--text);padding:8px 13px;border-radius:20px;font-size:13px;cursor:pointer}
+.chip.on{background:var(--navy);color:var(--bg);border-color:var(--navy)}
+.chip.on.warn{background:var(--orange);border-color:var(--orange);color:#fff}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.row:last-child{border:0}.row span{color:var(--mut)}.row b{text-align:right;color:var(--text)}
+.hero{background:var(--blue);border-radius:22px;padding:22px 18px;margin:6px 0 16px;text-align:center}
+.logo{font-size:44px}.tag{display:inline-block;background:var(--orange-bg);color:var(--orange);font-weight:600;font-size:12px;padding:5px 10px;border-radius:20px;margin-bottom:12px}
+.q{font-size:14px;font-weight:600;margin-bottom:10px;color:var(--text)}
+.vitem{display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;font:inherit;color:var(--text)}
+.vitem small{display:block;color:var(--mut);font-weight:400;margin-top:2px}
+.badge{margin-left:auto;font-size:11.5px;font-weight:700;padding:5px 9px;border-radius:20px;white-space:nowrap}
+.v1{background:var(--green-bg);color:var(--green)}.v2{background:var(--red-bg);color:var(--red)}.v3{background:var(--blue);color:var(--mut)}
+.res{border-radius:18px;padding:18px;text-align:center;margin-bottom:12px}
+.res .ic{font-size:40px}.res h1{margin:6px 0}
+.low{background:var(--green-bg)}.cau{background:var(--orange-bg)}.high{background:var(--red-bg)}
+.meter{display:flex;gap:4px;margin:10px 0 4px}.meter i{flex:1;height:8px;border-radius:4px;background:var(--line)}
+ul{padding-left:18px;margin:6px 0;font-size:14px;line-height:1.55;color:var(--text)}
+.src{font-size:11px;color:var(--mut);text-align:center;margin-top:4px}
+.hl{list-style:none;padding:0;margin:0}.hl li{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.45}.hl li:last-child{border:0}
+</style></head><body>
+<div class="phone" id="app"></div>
+<script>
+const S={screen:1,prev:[],f:{company:"BrightPath Solutions (sample)",role:"Marketing Intern",site:"",src:"WhatsApp",stipend:"₹5,000 / month",fee:"Yes"},
+q:["Yes","No","Not Sure","No","No"],v:["Not Verified","Not Checked","Not Verified","Not Checked","Not Checked"],info:null};
+const QS=["Is the company asking for a registration fee?","Was selection promised without an interview?","Is the company website or contact information missing?","Is the job description unclear?","Is the student being pressured to accept immediately?"];
+const VS=[["Official website","Does a working website exist with consistent details?"],["Company registration information","Is a registration number or legal name shown?"],["Contact details","Official email, phone and address available?"],["Professional presence","Company page or profile with real activity?"],["Student or senior experiences","Feedback from past interns or alumni?"]];
+const TITLES=["Home","Enter Details","Review Details","Red Flag Checklist","Company Verification","Final Assessment"];
+const e=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function go(n,back){if(!back)S.prev.push(S.screen);S.screen=n;render();}
+function goBack(){const p=S.prev.pop();S.screen=p||1;render();}
+function assess(){let pts=0,warns=[],reasons=[];
+ const WL=["Registration fee requested","Selection promised without an interview","Website or contact information missing","Unclear job description","Pressure to accept immediately"];
+ S.q.forEach((a,i)=>{if(a==="Yes"){pts+=2;warns.push(WL[i]);}else if(a==="Not Sure"){pts+=1;warns.push(WL[i]+" (not sure)");}});
+ const nv=S.v.filter(x=>x==="Not Verified").length,vv=S.v.filter(x=>x==="Verified").length,nc=S.v.filter(x=>x==="Not Checked").length;
+ pts+=nv-vv*0.5;if(pts<0)pts=0;
+ let cat=pts<=2?0:pts<=6?1:2;if(S.q[0]==="Yes"&&cat===0)cat=1;
+ if(S.q[0]==="Yes")reasons.push("A registration or training fee is requested, which is a common scam sign.");
+ if(nv)reasons.push(nv+" company detail(s) marked Not Verified.");
+ if(nc)reasons.push(nc+" verification item(s) not checked yet, so the picture is incomplete.");
+ if(S.q[1]==="Yes")reasons.push("Selection was promised without an interview.");
+ if(S.q[4]==="Yes")reasons.push("Pressure to accept quickly reduces your time to verify.");
+ if(!reasons.length)reasons.push("Few warning signs were reported based on your answers.");
+ return{cat,pts,warns,reasons,nv,vv,nc};}
+const CATS=[{n:"Low Warning Signs",c:"low",i:"✅",t:"Few red flags based on your answers. Still confirm details before sharing personal data."},{n:"Caution",c:"cau",i:"⚠️",t:"Some warning signs were found. Verify further before applying or paying anything."},{n:"High Warning Signs",c:"high",i:"🚫",t:"Several serious warning signs. Do not pay or share documents until independently confirmed."}];
+function bar(title,back){return `<div class="top">${back?'<button class="back" data-a="back" aria-label="Back">←</button>':'<span class="logo" style="font-size:22px">🛡️</span>'}<b>${title}</b><span class="step">${S.screen>1?"Step "+S.screen+" of 6":""}</span></div><div class="prog"><i style="width:${S.screen/6*100}%"></i></div>`;}
+function chips(name,opts,val,warnVal){return `<div class="chips">${opts.map(o=>`<button class="chip ${val===o?'on':''} ${val===o&&o===warnVal?'warn':''}" data-a="${name}" data-v="${e(o)}">${o}</button>`).join("")}</div>`;}
+const SAMPLE='<div class="note">Sample prototype: all details shown are illustrative sample data, not real company information.</div>';
+function screens(){const f=S.f;
+ if(S.screen===1)return `${bar("InternCheck",false)}<div class="body"><div class="hero"><div class="logo">🛡️</div><span class="tag">Your first step towards a safe internship.</span><h1>Is this internship real?</h1><p>Check an internship opportunity before you apply. Answer a few questions, spot common red flags and get a simple assessment to help you decide safely.</p></div>
+ <div class="note">InternCheck is a guidance tool. It does <b>not</b> verify companies or access any government database.</div></div>
+ <div class="foot"><button class="btn" data-a="go" data-v="2">Check an Internship</button><button class="btn sec" data-a="red">⚑ Learn About Red Flags</button><button class="btn sec" data-a="exp">💬 Student Experiences</button></div>`;
+ if(S.screen===2)return `${bar("Enter Internship Details",true)}<div class="body"><p>Fill in what you know. Pre-filled values are sample data you can edit.</p>
+ <label>Company name</label><input data-i="company" value="${e(f.company)}">
+ <label>Internship role</label><input data-i="role" value="${e(f.role)}">
+ <label>Company website</label><input data-i="site" placeholder="e.g. www.example.com (leave blank if none)" value="${e(f.site)}">
+ <label>Where did you find this internship?</label>${chips("src",["LinkedIn","WhatsApp","Instagram","Job Portal","Other"],f.src)}
+ <label>Stipend offered</label><input data-i="stipend" value="${e(f.stipend)}">
+ <label>Is any registration or training fee requested?</label>${chips("fee",["Yes","No","Not sure"],f.fee,"Yes")}<div style="height:14px"></div></div>
+ <div class="foot"><button class="btn" data-a="cont">Continue</button></div>`;
+ if(S.screen===3)return `${bar("Review Details",true)}<div class="body">${SAMPLE}<div class="card"><h2>${e(f.role||"—")}</h2><p style="margin-bottom:6px">${e(f.company||"—")}</p>
+ <div class="row"><span>Company name</span><b>${e(f.company||"—")}</b></div><div class="row"><span>Job role</span><b>${e(f.role||"—")}</b></div><div class="row"><span>Stipend</span><b>${e(f.stipend||"Not stated")}</b></div>
+ <div class="row"><span>Duration</span><b>3 months (sample)</b></div><div class="row"><span>Application fee</span><b style="color:${f.fee==="Yes"?"var(--orange)":"inherit"}">${f.fee==="Yes"?"Fee requested – ₹1,500 (sample)":f.fee==="No"?"No fee":"Not sure"}</b></div>
+ <div class="row"><span>Selection process</span><b>Online form + chat, no interview (sample)</b></div><div class="row"><span>Website</span><b>${e(f.site||"Not provided")}</b></div><div class="row"><span>Found via</span><b>${e(f.src)}</b></div></div>
+ <p>Check that this matches the offer you received. Duration and selection process are sample values in this prototype.</p></div>
+ <div class="foot"><button class="btn" data-a="go" data-v="4">Check for Red Flags</button><button class="btn out" data-a="back">Edit Details</button></div>`;
+ if(S.screen===4)return `${bar("Red Flag Checklist",true)}<div class="body"><p>Answer each question honestly. Choose “Not Sure” if you don’t know.</p>
+ ${QS.map((q,i)=>`<div class="card"><div class="q">${i+1}. ${q}</div>${chips("q"+i,["Yes","No","Not Sure"],S.q[i],"Yes")}</div>`).join("")}</div>
+ <div class="foot"><button class="btn" data-a="go" data-v="5">View Assessment</button></div>`;
+ if(S.screen===5){const cls={"Verified":"v1","Not Verified":"v2","Not Checked":"v3"};const ic={"Verified":"✔ Verified","Not Verified":"✖ Not Verified","Not Checked":"○ Not Checked"};
+ return `${bar("Company Verification",true)}<div class="body"><p>Check these items yourself, then tap an item to set its status. InternCheck does not check them for you.</p>
+ <div class="card">${VS.map((x,i)=>`<button class="vitem row" data-a="vtog" data-v="${i}" style="background:none;border-left:0;border-right:0;border-top:0"><div><b style="text-align:left">${x[0]}</b><small>${x[1]}</small></div><span class="badge ${cls[S.v[i]]}">${ic[S.v[i]]}</span></button>`).join("")}</div>
+ <div class="note"><b>Note:</b> Missing information does not automatically mean a company is fake. Many genuine small companies have limited online presence. Use this as a prompt to ask more questions.</div></div>
+ <div class="foot"><button class="btn" data-a="go" data-v="6">See Final Assessment</button></div>`;}
+ const A=assess(),C=CATS[A.cat];
+ return `${bar("Final Assessment",true)}<div class="body"><div class="res ${C.c}"><div class="ic">${C.i}</div><p style="margin:0;font-size:12px">Assessment for ${e(f.company)}</p><h1>${C.n}</h1><div class="meter">${[0,1,2].map(i=>`<i style="background:${i<=A.cat?["#1f8a4c","#f08a24","#c43b3b"][A.cat]:""}"></i>`).join("")}</div><p style="margin:6px 0 0;color:var(--text)">${C.t}</p></div>
+ <div class="card"><h2 style="font-size:16px">Warning signs detected</h2><ul>${A.warns.length?A.warns.map(w=>`<li>${e(w)}</li>`).join(""):"<li>None reported</li>"}${A.nv?`<li>${A.nv} company detail(s) not verified</li>`:""}</ul></div>
+ <div class="card"><h2 style="font-size:16px">Reasons for this assessment</h2><ul>${A.reasons.map(r=>`<li>${e(r)}</li>`).join("")}</ul></div>
+ <div class="card"><h2 style="font-size:16px">Recommended next steps</h2><ul><li>Do not pay any fee until the company is independently confirmed.</li><li>Ask for an offer letter and a proper interview process.</li><li>Check the company on its official website and professional profiles.</li><li>Talk to your placement cell, a senior or a mentor.</li></ul></div>
+ <div class="note">This is a guidance-only sample assessment based on your answers. It is not proof that a company is real or fake.</div></div>
+ <div class="foot"><button class="btn" data-a="again">Check Another Internship</button><button class="btn sec" data-a="home">Back to Home</button></div>`;}
+function modal(t,html){return `<div id="mod" style="position:absolute;inset:0;background:rgba(10,20,40,.5);display:flex;align-items:flex-end;z-index:9"><div style="background:var(--bg);width:100%;max-height:80%;overflow:auto;border-radius:24px 24px 0 0;padding:20px"><h2>${t}</h2>${html}<button class="btn" data-a="close" style="margin-top:12px">Close</button></div></div>`;}
+function render(extra){const a=document.getElementById("app");a.style.position="relative";a.innerHTML=screens()+(extra||"");const b=a.querySelector(".body");if(b)b.scrollTop=0;}
+document.getElementById("app").addEventListener("click",ev=>{const t=ev.target.closest("[data-a]");if(!t)return;const a=t.dataset.a,v=t.dataset.v;
+ if(a==="back")goBack();else if(a==="go")go(+v);else if(a==="cont")go(3);
+ else if(a==="home"){S.prev=[];S.screen=1;render();}
+ else if(a==="again"){S.prev=[];S.f.company="";S.f.role="";S.f.site="";S.f.stipend="";S.f.fee="Not sure";S.q=["Not Sure","Not Sure","Not Sure","Not Sure","Not Sure"];S.v=VS.map(()=>"Not Checked");S.screen=2;render();}
+ else if(a==="src"||a==="fee"){S.f[a]=v;if(a==="fee")S.q[0]=v==="Yes"?"Yes":v==="No"?"No":"Not Sure";render();}
+ else if(/^q\d$/.test(a)){S.q[+a[1]]=v;const y=document.querySelector(".body").scrollTop;render();document.querySelector(".body").scrollTop=y;}
+ else if(a==="vtog"){const o=["Not Checked","Verified","Not Verified"];S.v[+v]=o[(o.indexOf(S.v[+v])+1)%3];const y=document.querySelector(".body").scrollTop;render();document.querySelector(".body").scrollTop=y;}
+ else if(a==="red")render(modal("Common red flags",`<ul class="hl">${["💸 Asks for registration, training or “security” fees","⚡ Promises selection without an interview","📵 No website, or only a free email or chat contact","📄 Vague role, tasks or duration","⏰ Pressure to accept or pay immediately"].map(x=>`<li>${x}</li>`).join("")}</ul><p>Sample guidance for students; not an exhaustive list.</p>`));
+ else if(a==="exp")render(modal("Student experiences (sample)",`<div class="note">Illustrative sample stories, not real reports.</div><div class="card"><b>Aarav, 3rd year (sample)</b><p style="margin:4px 0 0">“I was asked for a ₹2,000 ‘kit fee’ over WhatsApp. I asked for an offer letter first and they stopped replying.”</p></div><div class="card"><b>Meera, 2nd year (sample)</b><p style="margin:4px 0 0">“My seniors confirmed the company was genuine, and the interview was on a video call with the team.”</p></div>`));
+ else if(a==="close")render();});
+document.getElementById("app").addEventListener("input",ev=>{const k=ev.target.dataset.i;if(k)S.f[k]=ev.target.value;});
+render();
+</script></body></html>
